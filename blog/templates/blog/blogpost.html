@@ -1,0 +1,91 @@
+{% extends 'blog/basic.html' %}
+{% block body %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <h1 class="pb-4 mb-4 font-italic text-center">
+                {{ post.title }}
+            </h1>
+            <div class="blog-post border rounded p-4 shadow-sm mb-4">
+                <h2 class="blog-post-title">{{ post.heading0 }}</h2>
+                <p class="blog-post-meta text-muted">{{ post.pub_date|date:"F j, Y" }}</p>
+                <h3 class="mt-4">{{ post.head0 }}</h3>
+<!--                <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-numposts="5"></div>-->
+
+                <p>{{ post.chead0 }}</p>
+                <h5 class="mt-3">{{ post.head1 }}</h5>
+                <p>{{ post.chead1 }}</p>
+                <h4 class="mt-3">{{ post.head2 }}</h4>
+                <p>{{ post.chead2 }}</p>
+
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <!-- Previous Blog Button -->
+                {% if post.post_id > 1 %}
+                    <a href="http://127.0.0.1:8000/blog/blogpost/{{ post.post_id|add:"-1" }}" class="btn btn-primary">Previous Blog</a>
+                {% else %}
+                    <button class="btn btn-secondary" disabled>Previous Blog</button>
+                {% endif %}
+
+                <!-- Next Blog Button -->
+                {% if post.post_id < total_posts %}
+                    <a href="http://127.0.0.1:8000/blog/blogpost/{{ post.post_id|add:"1" }}" class="btn btn-primary">Next Blog</a>
+                {% else %}
+                    <button class="btn btn-secondary" disabled>Next Blog</button>
+                {% endif %}
+            </div>
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+            <div class="p-4 mb-3 bg-light rounded shadow-sm">
+                <h4 class="font-italic">About</h4>
+                <p class="mb-0">My Awesome Cart <em>started out as a small project and is now</em> the fastest growing
+                    e-commerce store of all time in India and abroad.</p>
+                 <div class="fb-like" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div>
+            </div>
+            <div class="p-4">
+                <h4 class="font-italic">Contact Us</h4>
+                <ol class="list-unstyled">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                   <div class="fb-share-button" data-href="http://127.0.0.1:8000/blog/blogpost/2" data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fblog%2Fblogpost%2F2&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                </ol>
+            </div>
+        </aside><!-- /.blog-sidebar -->
+    </div>
+</div>
+
+<style>
+    .blog-post {
+        background-color: #ffffff;
+        border: 1px solid #e1e1e1;
+        border-radius: 0.25rem;
+    }
+
+    .blog-post-title {
+        color: #007bff;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+</style>
+{% endblock %}
